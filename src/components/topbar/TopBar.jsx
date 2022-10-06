@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import "./topbar.css";
 
 export default function topbar() {
+  const user=true
   return (
     <div className="top">
       <div className="topleft">
@@ -11,15 +13,31 @@ export default function topbar() {
       </div>
       <div className="topcenter">
         <ul className="toplist">
-            <li className="toplistItem">HOME</li>
-            <li className="toplistItem">ABOUT</li>
-            <li className="toplistItem">CONTACT</li>
-            <li className="toplistItem">WRITE</li>
-            <li className="toplistItem">LOGOUT</li>
+            <li className="toplistItem">
+              <Link to="/" className="link">HOME</Link>
+            </li>
+            <li className="toplistItem"><Link to="/" className="link">ABOUT</Link></li>
+            <li className="toplistItem"><Link to="/" className="link">CONTACT</Link></li>
+            <li className="toplistItem"><Link to="/write" className="link">WRITE</Link></li>
+            <li className="toplistItem"><Link to="/login" className="link">{user && "LOGOUT"}</Link></li>
         </ul>
       </div>
       <div className="topright">
-        <img src="https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg" className="topimg" alt="" />
+        {user ? (
+           <img src="https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg" className="topimg" alt="" />
+        ):(         
+          <ul className="toplist">
+            <li className="toplistItem">
+            <Link to="/login" className="link">LOGIN</Link>
+            </li>
+            <li className="toplistItem">
+            <Link to="/register" className="link">REGISTER</Link>
+            </li>
+                 
+                  
+          </ul>
+        )}
+       
         <i className="topsearchicon  fa-solid fa-magnifying-glass"></i>
       </div>
     </div>
