@@ -26,5 +26,31 @@ router.post('/register',async(req,res)=>{
 
 /* ---------------------------------- Login --------------------------------- */
 
+router.post('/login',async(req,res)=>{
+    try{
+       
+      let {username,password}=req.body
+    let user=await User.findOne({username:username})
+    if(user){
+        let verifypassword=await bcrypt.compare(password,user.password)
+        if(verifypassword){
+            let {password,...others}=user._doc
+            res.status(200).json(others)
+        }else{
+            res.status(500).json("invalid credentials")
+        }
+
+    }else{
+        res.status(500).json("invalid credentials")
+    }
+        
+        
+
+    }catch(err){
+        res.status(500).json(err)
+
+
+    }
+})
 
 module.exports=router
