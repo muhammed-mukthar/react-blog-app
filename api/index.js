@@ -9,9 +9,11 @@ app.use(logger("dev"));
 const authroute=require('../api/routes/auth')
 const userroute=require('../api/routes/users')
 const  postroute=require('../api/routes/posts')
+const categoryroute=require('../api/routes/categories')
 app.use("/api/auth",authroute)
 app.use("/api/users",userroute)
 app.use("/api/posts",postroute)
+app.use("/api/categories",categoryroute)
 mongoose.connect(process.env.MONGO_CONNECT,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
