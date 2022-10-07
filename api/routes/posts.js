@@ -40,6 +40,26 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+/* ------------------------------- Delete Post ------------------------------ */
 
+router.delete("/:id", async (req, res) => {
+    try {
+      const post = await Post.findById(req.params.id);
+  
+      if (post.username === req.body.username) {
+          
+        try {
+        await post.delete()
+          res.status(200).json("post has been deleted")
+        } catch (err) {
+          res.status(500).json(err);
+        }
+      } else {
+        res.status(401).json("you can delete only your post");
+      }
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 module.exports = router;
