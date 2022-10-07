@@ -8,7 +8,10 @@ app.use(express.json())
 app.use(logger("dev"));
 const authroute=require('../api/routes/auth')
 const userroute=require('../api/routes/users')
-
+const  postroute=require('../api/routes/posts')
+app.use("/api/auth",authroute)
+app.use("/api/users",userroute)
+app.use("/api/posts",postroute)
 mongoose.connect(process.env.MONGO_CONNECT,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -16,8 +19,7 @@ mongoose.connect(process.env.MONGO_CONNECT,{
 }).then(console.log("connected to mongo")).catch((err)=> console.log(err,"not connected to mongo"))
 
 
-app.use("/api/auth",authroute)
-app.use("/api/users",userroute)
+
 
 app.listen("5000",()=>{
     console.log("Backend  on port 5000");
