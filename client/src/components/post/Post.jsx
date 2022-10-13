@@ -16,7 +16,7 @@ export default function Post({post}) {
           ))}
 
         </div>
-        <Link to={`/post/${post._id}`} >
+        <Link className="link" to={`/posts/${post._id}` } >
         <span className="postTitle">{post.title}</span>
         </Link>
         <hr />
