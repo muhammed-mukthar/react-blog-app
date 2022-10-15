@@ -1,7 +1,7 @@
 import "./login.css";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { Context } from "../../context.js/Context";
+import { Context } from "../../../context.js/Context";
 import { useContext } from "react";
 import axios from "axios";
 export default function Login() {
@@ -43,7 +43,7 @@ export default function Login() {
           placeholder="Enter your Password...."
           ref={passwordRef}
         />
-        <button className="loginButton" type="submit" disabled={isFetching}>
+        <button className="loginButton" type="submit">
           Login
         </button>
       </form>
