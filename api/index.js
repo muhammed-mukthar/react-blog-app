@@ -4,6 +4,7 @@ const dotenv=require('dotenv')
 const logger=require('morgan')
 const mongoose=require('mongoose')
 const multer=require("multer")
+const cors = require('cors')
 dotenv.config()
 
 const authroute=require('../api/routes/auth')
@@ -32,6 +33,8 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
 })
 
 app.use(logger("dev"));
+app.use(cors())
+
 app.use("/api/auth",authroute)
 app.use("/api/users",userroute)
 app.use("/api/posts",postroute)
