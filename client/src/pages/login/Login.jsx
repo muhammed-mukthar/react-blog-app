@@ -23,7 +23,7 @@ export default function Login() {
       dispatch({type:"LOGIN_FAILURE" })
     }
   };
-  console.log(user);
+  console.log("user");
 
   return (
     <div className="login">
