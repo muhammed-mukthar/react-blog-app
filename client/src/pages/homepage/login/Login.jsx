@@ -1,6 +1,7 @@
-import "./login.css"
+import "./login.css";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+
 export default function Login() {
   const userRef=useRef()
   const passwordRef=useRef()
@@ -20,6 +21,7 @@ export default function Login() {
             <button className="loginButton">Login</button>
         </form>
         <button className="loginRegisterButton"><Link to="/register" type="submit" onSubmit={handleSubmit} className="link" >Register</Link>  </button>
+
     </div>
-  )
+  );
 }
