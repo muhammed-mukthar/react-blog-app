@@ -8,6 +8,7 @@ import Register from "./pages/homepage/register/Register";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 function App() {
   const user=false;
+  
   return (
     <Router>
       <Topbar />
