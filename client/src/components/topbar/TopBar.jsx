@@ -4,7 +4,12 @@ import { Context } from "../../context/Context";
 import "./topbar.css";
 
 export default function Topbar() {
-  const {user}=useContext(Context)
+  const {user,dispatch}=useContext(Context)
+  const handleLogout=()=>{
+    dispatch({type:"LOGOUT"})
+
+  }
+  
   return (
     <div className="top">
       <div className="topleft">
@@ -21,12 +26,12 @@ export default function Topbar() {
             <li className="toplistItem"><Link to="/" className="link">ABOUT</Link></li>
             <li className="toplistItem"><Link to="/" className="link">CONTACT</Link></li>
             <li className="toplistItem"><Link to="/write" className="link">WRITE</Link></li>
-            <li className="toplistItem"><Link to="/login" className="link">{user && "LOGOUT"}</Link></li>
+            <li className="toplistItem" onClick={handleLogout}><Link to="/login" className="link">{user && "LOGOUT"}</Link></li>
         </ul>
       </div>
       <div className="topright">
         {user ? (
-           <img src="https://raw.githubusercontent.com/mdn/learning-area/master/html/multimedia-and-embedding/images-in-html/dinosaur_small.jpg" className="topimg" alt="" />
+           <img src={user.profilePic} className="topimg" alt="" />
         ):(         
           <ul className="toplist">
             <li className="toplistItem">

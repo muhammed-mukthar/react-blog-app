@@ -5,6 +5,7 @@ const logger=require('morgan')
 const mongoose=require('mongoose')
 const multer=require("multer")
 const cors = require('cors')
+const path=require('path')
 dotenv.config()
 
 const authroute=require('../api/routes/auth')
@@ -12,6 +13,7 @@ const userroute=require('../api/routes/users')
 const  postroute=require('../api/routes/posts')
 const categoryroute=require('../api/routes/categories')
 app.use(express.json())
+app.use("/images",express.static(path.join(__dirname,"/images")))
 
 mongoose.connect(process.env.MONGO_CONNECT,{
     useNewUrlParser: true,
@@ -23,7 +25,7 @@ const storage=multer.diskStorage({
     destination:(req,file,cb)=>{
         cb(null,"images")
     },filename:(req,file,cb)=>{
-        cb(null,"31w.jpeg")
+        cb(null,req.body.name)
     }
 })
 
