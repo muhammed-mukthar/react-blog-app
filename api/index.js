@@ -18,6 +18,7 @@ app.use("/images",express.static(path.join(__dirname,"/images")))
 mongoose.connect(process.env.MONGO_CONNECT,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
+   
     
 }).then(console.log("connected to mongo")).catch((err)=> console.log(err,"not connected to mongo"))
 

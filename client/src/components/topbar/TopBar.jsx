@@ -30,7 +30,7 @@ export default function Topbar() {
         </ul>
       </div>
       <div className="topright">
-        {user ? (
+     <Link to='/setting' >   {user ? (
            <img src={user.profilePic} className="topimg" alt="" />
         ):(         
           <ul className="toplist">
@@ -43,7 +43,7 @@ export default function Topbar() {
                  
                   
           </ul>
-        )}
+        )}</Link>
        
         <i className="topsearchicon  fa-solid fa-magnifying-glass"></i>
       </div>
