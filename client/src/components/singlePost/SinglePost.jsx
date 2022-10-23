@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useLocation } from "react-router-dom";
 import "./Singlepost.css";
 import { useState } from "react";
-
+const PF='http://localhost:5000/images/'
 export default function SinglePost() {
   const location =useLocation()
  const path=location.pathname.split('/')[2];
@@ -19,7 +19,7 @@ export default function SinglePost() {
     <div className="singlePost">
       <div className="singlePostWrapper">
         {post.photo && <img
-          src= {post.photo}
+          src= {PF+post.photo}
           alt=""
           className="singlePostImg"
         />}
